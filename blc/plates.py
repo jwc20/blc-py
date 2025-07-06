@@ -41,9 +41,14 @@ class Plates:
             return 0
         return self.plates[weight].quantity
 
-    @property
+    def set_quantity(self, weight:float, new_quantity):
+        if weight not in self.plates:
+            raise(ValueError(f"not in plates"))
+        self.plates[weight].quantity = new_quantity
+
+
     def total_quantity(self):
-        return sum(plate.quantity for plate in self.plates.values())
+        return [(plate, value.quantity) for plate, value in zip(self.plates, self.plates.values())]
 
     def __repr__(self) -> str:
         return str([(plate.weight, plate.quantity) for plate in self.plates.values()])
@@ -51,3 +56,7 @@ class Plates:
     def __iter__(self):
         return iter((plate.weight, plate.quantity) for plate in self.plates.values())
 
+    def __getitem__(self, weight: float) -> int:
+        if weight not in self.plates:
+            return 0
+        return self.plates[weight].quantity
