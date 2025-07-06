@@ -26,3 +26,9 @@ if __name__ == "__main__":
     blc4.calculate_plates()
     blc4.remove_weight(20)
     print(f"{blc4.plates_to_use} + collars, new weight: {blc4.weight}")
+
+    plates6 = Plates(use_collar=True)
+    plates6.remove_plate(25, 8)
+    blc6 = Blc(208, plates6, Barbell(weight=20, type="men"))
+    blc6.calculate_plates()
+    print(f"{blc6.plates_to_use} + collars, new weight: {blc6.weight}")
