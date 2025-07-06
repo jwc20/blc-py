@@ -1,48 +1,35 @@
-class Plate:
-    def __init__(self, weight, quantity) -> None:
-        self.weight = weight
-        self.quantity = quantity
+from collections import defaultdict
 
 
 class Plates:
     weights = [25, 20, 15, 10, 5, 2.5, 2, 1.5, 1, 0.5]
 
-    def __init__(self, use_collar=True) -> None:
-        self.plates = [Plate(weight, 4) for weight in self.weights]
+    def __init__(self, use_collar: bool = True):
+        self.plates = defaultdict(int)
+        for weight in self.weights:
+            self.plates[weight] = 4
         self.use_collar = use_collar
 
-    def __iter__(self):
-        return iter(self.plates)
+    def add_plate(self, weight: float, quantity: int = 1) -> None:
+        self.plates[weight] += quantity
 
-    def __repr__(self):
-        return str([(plate.weight, plate.quantity) for plate in self.plates])
+    def remove_plate(self, weight: float, quantity: int = 1) -> None:
+        if self.plates[weight] < quantity:
+            raise ValueError(f"Not enough plates of weight {weight}")
+        self.plates[weight] -= quantity
+        if self.plates[weight] == 0:
+            del self.plates[weight]
 
-    def add_plate(self, weight, quantity=1):
-        for plate in self.plates:
-            if plate.weight == weight:
-                plate.quantity += quantity
-                return
-        raise ValueError(f"Plate {weight} not found")
+    def get_quantity(self, weight: float) -> int:
+        return self.plates[weight]
 
-    def remove_plate(self, weight, quantity=1):
-        for plate in self.plates:
-            if plate.weight == weight:
-                plate.quantity -= quantity
-                if plate.quantity == 0:
-                    self.plates.remove(plate)
-                return
-        raise ValueError(f"Plate {weight} not found")
+    def __repr__(self) -> str:
+        return str(list(self.plates.items()))
 
-    def get_plate(self, weight):
-        for plate in self.plates:
-            if plate.weight == weight:
-                return plate
-        raise ValueError(f"Plate {weight} not found")
+# if __name__ == "__main__":
+#     plates = Plates()
+#     # print([(plate.name, plate.weight, plate.quantity) for plate in plates])
 
+#     plates.add_plate(25, 2)
+#     print(repr(plates))
 
-if __name__ == "__main__":
-    plates = Plates()
-    # print([(plate.name, plate.weight, plate.quantity) for plate in plates])
-
-    plates.add_plate(25, 2)
-    print(repr(plates))
