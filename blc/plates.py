@@ -3,13 +3,6 @@ class Plate:
         self.weight = weight 
         self.quantity = quantity
 
-    # @property 
-    # def quantity(self):
-    #     return self.quantity
-
-    # @quantity.setter
-    # def quantity(self, new_quantity):
-    #     self.quantity = new_quantity
 
 class Plates:
     weights = [25, 20, 15, 10, 5, 2.5, 2, 1.5, 1, 0.5]
