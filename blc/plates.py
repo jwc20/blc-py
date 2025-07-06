@@ -9,17 +9,17 @@ class Plates:
     def __init__(self, use_collar: bool = True):
         self.plates = {}
         for weight in self.weights:
-            self.plates[weight] = Plate(weight, 4)
+            self.plates[weight] = Plate(weight, 8)
         self.use_collar = use_collar
 
-    def add_plate(self, weight: float, quantity: int = 1) -> None:
+    def add_plate(self, weight: float, quantity: int = 2) -> None:
         if quantity % 2 != 0:
             raise ValueError(f"Quantity must be even, got {quantity}")
         if weight not in self.plates:
             self.plates[weight] = Plate(weight, 0)
         self.plates[weight].quantity += quantity
 
-    def remove_plate(self, weight: float, quantity: int = 1) -> None:
+    def remove_plate(self, weight: float, quantity: int = 2) -> None:
         if quantity % 2 != 0:
             raise ValueError(f"Quantity must be even, got {quantity}")
         if weight not in self.plates or self.plates[weight].quantity < quantity:
