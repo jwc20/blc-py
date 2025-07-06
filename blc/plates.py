@@ -3,6 +3,14 @@ class Plate:
         self.weight = weight 
         self.quantity = quantity
 
+    # @property 
+    # def quantity(self):
+    #     return self.quantity
+
+    # @quantity.setter
+    # def quantity(self, new_quantity):
+    #     self.quantity = new_quantity
+
 class Plates:
     weights = [25, 20, 15, 10, 5, 2.5, 2, 1.5, 1, 0.5]
 
@@ -12,14 +20,14 @@ class Plates:
             self.plates[weight] = Plate(weight, 8)
         self.use_collar = use_collar
 
-    def add_plate(self, weight: float, quantity: int = 2) -> None:
+    def add_plate(self, weight: float, quantity: int = 2):
         if quantity % 2 != 0:
             raise ValueError(f"Quantity must be even, got {quantity}")
         if weight not in self.plates:
             self.plates[weight] = Plate(weight, 0)
         self.plates[weight].quantity += quantity
 
-    def remove_plate(self, weight: float, quantity: int = 2) -> None:
+    def remove_plate(self, weight: float, quantity: int = 2):
         if quantity % 2 != 0:
             raise ValueError(f"Quantity must be even, got {quantity}")
         if weight not in self.plates or self.plates[weight].quantity < quantity:

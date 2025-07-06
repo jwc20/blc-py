@@ -1,6 +1,5 @@
-from plates import Plates
-from barbell import Barbell
-from typing import List, Tuple
+from .plates import Plates
+from .barbell import Barbell
 
 
 class Blc:
@@ -30,17 +29,3 @@ class Blc:
                 quantity -= 2
 
         return plates_to_use
-
-
-if __name__ == "__main__":
-    # input = input("Enter the weight: ")
-    weight = 100
-
-
-    blc = Blc(weight, Plates(use_collar=False), Barbell(weight=20, type="men"))
-
-    print(blc.calculate_plates())
-
-    blc2 = Blc(weight, Plates(use_collar=True), Barbell(weight=20, type="men"))
-
-    print(blc2.calculate_plates(), " + collars")
