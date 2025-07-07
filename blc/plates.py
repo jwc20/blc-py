@@ -7,11 +7,10 @@ class Plate:
 class Plates:
     weights = [25, 20, 15, 10, 5, 2.5, 2, 1.5, 1, 0.5]
 
-    def __init__(self, use_collar: bool = True):
+    def __init__(self):
         self.plates = {}
         for weight in self.weights:
             self.plates[weight] = Plate(weight, 8)
-        self.use_collar = use_collar
 
     def add_plate(self, weight: float, quantity: int = 2):
         if quantity % 2 != 0:
