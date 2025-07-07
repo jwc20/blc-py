@@ -3,14 +3,15 @@ from .barbell import Barbell
 
 
 class Blc:
-    def __init__(self, weight, plates: Plates, barbell: Barbell) -> None:
-        self.weight = weight
+    def __init__(self, plates: Plates, barbell: Barbell) -> None:
+        self.weight = 0
         self.plates = plates  # plates available
         self.barbell = barbell
         self.plates_to_use = []
 
-    def calculate_plates(self):
-        target_weight = self.weight
+    def calculate_plates(self, weight):
+        self.weight = weight
+        target_weight = weight
 
         weight_to_load = (
             target_weight - self.barbell.weight
