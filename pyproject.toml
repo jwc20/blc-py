@@ -1,6 +1,6 @@
 [project]
 name = "blc-py"
-version = "0.1.1"
+version = "0.1.2"
 description = "Barbell Loading Calculator for Olympic Weightlifting"
 readme = "README.md"
 requires-python = ">=3.12"
