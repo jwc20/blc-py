@@ -1,4 +1,4 @@
-from .plates import Plate, Plates
+from .plates import Plates
 from .barbell import Barbell
 
 
@@ -9,7 +9,7 @@ class Blc:
         self.barbell = barbell
         self.plates_to_use = []
 
-    def calculate_plates(self, weight):
+    def calculate_plates(self, weight, use_collar=False):
         self.weight = weight
         target_weight = weight
 
@@ -17,7 +17,7 @@ class Blc:
             target_weight - self.barbell.weight
         ) / 2  # weights that need to be loaded for one side
 
-        if self.plates.use_collar:
+        if use_collar:
             weight_to_load -= 2.5
 
         if weight_to_load <= 0:  # or weight_to_load >= 275:

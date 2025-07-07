@@ -9,6 +9,6 @@ __all__ = [
 ]
 
 
-__version__ = "0.1.1"
+__version__ = "0.1.2"
 __authors__ = ["jwc20"]
 __source__ = "https://github.com/jwc20/blc-py"
