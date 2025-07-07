@@ -1,19 +1,18 @@
 """
 Tests for the Plates class.
 """
+
 import pytest
-from blc.plates import Plates, Plate
+from blc.plates import Plates
 
 
 def test_plates_initialization():
     """Test that Plates initializes with correct default plates."""
-    plates = Plates(use_collar=True)
+    plates = Plates()
 
     # Check that all default weights are initialized with quantity 8
     for weight in Plates.weights:
         assert plates.get_quantity(weight) == 8
-
-    assert plates.use_collar is True
 
 
 def test_add_plate():
